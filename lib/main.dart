@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'constant/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,25 +8,11 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Gift Memo',
-      theme: ThemeData(
-        colorScheme: const ColorScheme(
-            brightness: Brightness.light,
-            primary: Color(0xFFFF6e61),
-            onPrimary: Color(0xFFFFFFFF),
-            secondary: Color(0xFF86D7AF),
-            onSecondary: Color(0xFFFFFFFF),
-            error: Color(0xFFBA1B1B),
-            onError: Color(0xFFFFFFFF),
-            primaryContainer: Color(0xFFFF6e61),
-            surface: Color(0xFFFFFFFF),
-            onSurface: Color(0xFF4c4c4c)),
-        useMaterial3: true,
-      ),
+      theme: colorTheme,
       home: const MyHomePage(title: 'Gift Memo'),
     );
   }
