@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'constant/colors.dart';
 import 'components/home/tabbed_app_bar.dart';
+import 'components/home/calendar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,19 +30,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return const DefaultTabController(
         length: 3,
         child: Scaffold(
           appBar: TabbedAppBar(),
-          body: TabBarView(
-            children: [
-              Center(child: Icon(Icons.redeem)),
-              Center(child: Icon(Icons.redeem)),
-              Center(child: Icon(Icons.person_outline)),
-            ],
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+            child: TabBarView(
+              children: [
+                Calendar(),
+                Center(child: Icon(Icons.redeem)),
+                Center(child: Icon(Icons.person_outline)),
+              ],
+            ),
           ),
         ));
   }
