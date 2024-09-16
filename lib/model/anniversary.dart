@@ -5,13 +5,15 @@ part 'generated/anniversary.g.dart';
 
 @freezed
 class Anniversary with _$Anniversary {
+  @JsonSerializable(includeIfNull: false)
   const factory Anniversary({
-    required int id,
+    int? id,
     required String name,
     required DateTime date,
-    @JsonKey(name: 'is_gift_reminder_enabled') @Default(false) required bool isGiftReminderEnabled,
-    @JsonKey(name: 'is_anniversary_reminder_enabled') @Default(false) required bool isAnniversartReminderEnabled,
-    @JsonKey(name: 'user_id') required int userId,
+    @JsonKey(name: 'is_gift_reminder_enabled') bool? isGiftReminderEnabled,
+    @JsonKey(name: 'is_anniversary_reminder_enabled') bool? isAnniversartReminderEnabled,
+    @JsonKey(name: 'user_id') String? userId,
+    @JsonKey(name: 'is_annually') bool? isAnnually,
   }) = _Anniversary;
 
   factory Anniversary.fromJson(Map<String, dynamic> json) => _$AnniversaryFromJson(json);

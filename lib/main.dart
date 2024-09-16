@@ -2,8 +2,23 @@ import 'package:flutter/material.dart';
 import 'constant/colors.dart';
 import 'components/home/tabbed_app_bar.dart';
 import 'components/home/calendar.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Flutterの初期化を確認
+  await dotenv.load(fileName: '.env');
+  await Supabase.initialize(
+    url: dotenv.get('API_URL'),
+    anonKey: dotenv.get('ANON_KEY'),
+  );
+
+  //  とりあえずここでログインしておく
+  await Supabase.instance.client.auth.signInWithPassword(
+    email: dotenv.get('SUPABASE_AUTH_LOGIN_EMAIL'),
+    password: dotenv.get('SUPABASE_AUTH_LOGIN_PASSWORD'),
+  );
+
   runApp(const MyApp());
 }
 
