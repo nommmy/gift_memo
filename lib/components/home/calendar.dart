@@ -1,23 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gift_memo/model/anniversary.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-
-Future<List<Anniversary>> fetchAnniversary() async {
-  try {
-    final SupabaseClient supabase = Supabase.instance.client;
-    final data = await supabase.from('t_anniversary').select('name, date, is_annually');
-
-    List<Anniversary> anniversary = [];
-    data.forEach((anniv) {
-      anniversary.add(Anniversary.fromJson(anniv));
-    });
-
-    return anniversary;
-  } catch (error) {
-    return <Anniversary>[];
-  }
-}
+import 'package:gift_memo/view_model/anniversary_view_model.dart';
 
 class Calendar extends StatefulWidget {
   const Calendar({super.key});
@@ -32,47 +15,12 @@ class _CalendarPageState extends State<Calendar> {
   // カレンダー上でマークが表示される日付
   DateTime _currentDay = DateTime.now();
 
-  // late Anniversary _anniversary;
-
-  // @override
-  // void initState() async {
-  //   super.initState();
-  //      setState(() {
-  //     _anniversary = await _fetchAnniversary();
-  //   });
-  // }
-
-  //   Future<Anniversary> _fetchAnniversary() async {
-
-  //   }
-
-  // Future<void> _fetchData() async {
-  //   // データをフェッチする処理
-  //   await Future.delayed(const Duration(seconds: 2)); // ダミーデータのフェッチ
-  //   setState(() {
-  //     _anniversary = {
-  //       'id': 1,
-  //       'name': '結婚記念日',
-  //       'date': DateTime.now(),
-  //       'isGiftReminderEnabled': false,
-  //       'isAnniversaryReminderEnabled': false,
-  //       'userId': '1',
-  //       'isAnnually': true,
-  //     };
-  //   });
-  // }
-
-// late final ValueNotifier<List> _selectedEvents;
-//   _selectedEvents = ValueNotifier(_getEventsForDay(_focusedDay!));
-
-//   List _getEventsForDay(DateTime day) {
-//     return events[day] ?? [];
-//   }
+  final AnniversaryViewModel _viewModel = AnniversaryViewModel();
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: fetchAnniversary(),
+        future: _viewModel.fetchAnniversaries(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             print(snapshot.data);
