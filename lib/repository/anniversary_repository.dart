@@ -14,7 +14,6 @@ class AnniversaryRepository {
 
       return anniversary;
     } catch (error) {
-      print(error);
       return <AnnivWithGiftRecipient>[];
     }
   }

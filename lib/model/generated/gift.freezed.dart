@@ -28,6 +28,7 @@ mixin _$Gift {
   @JsonKey(name: 'user_id')
   String? get userId => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
+  String? get category => throw _privateConstructorUsedError;
 
   /// Serializes this Gift to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +50,8 @@ abstract class $GiftCopyWith<$Res> {
       @JsonKey(name: 'image_url') String? imageUrl,
       int price,
       @JsonKey(name: 'user_id') String? userId,
-      String? url});
+      String? url,
+      String? category});
 }
 
 /// @nodoc
@@ -73,6 +75,7 @@ class _$GiftCopyWithImpl<$Res, $Val extends Gift>
     Object? price = null,
     Object? userId = freezed,
     Object? url = freezed,
+    Object? category = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -99,6 +102,10 @@ class _$GiftCopyWithImpl<$Res, $Val extends Gift>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -116,7 +123,8 @@ abstract class _$$GiftImplCopyWith<$Res> implements $GiftCopyWith<$Res> {
       @JsonKey(name: 'image_url') String? imageUrl,
       int price,
       @JsonKey(name: 'user_id') String? userId,
-      String? url});
+      String? url,
+      String? category});
 }
 
 /// @nodoc
@@ -137,6 +145,7 @@ class __$$GiftImplCopyWithImpl<$Res>
     Object? price = null,
     Object? userId = freezed,
     Object? url = freezed,
+    Object? category = freezed,
   }) {
     return _then(_$GiftImpl(
       id: freezed == id
@@ -163,6 +172,10 @@ class __$$GiftImplCopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -177,7 +190,8 @@ class _$GiftImpl implements _Gift {
       @JsonKey(name: 'image_url') this.imageUrl,
       required this.price,
       @JsonKey(name: 'user_id') this.userId,
-      this.url});
+      this.url,
+      this.category});
 
   factory _$GiftImpl.fromJson(Map<String, dynamic> json) =>
       _$$GiftImplFromJson(json);
@@ -196,10 +210,12 @@ class _$GiftImpl implements _Gift {
   final String? userId;
   @override
   final String? url;
+  @override
+  final String? category;
 
   @override
   String toString() {
-    return 'Gift(id: $id, name: $name, imageUrl: $imageUrl, price: $price, userId: $userId, url: $url)';
+    return 'Gift(id: $id, name: $name, imageUrl: $imageUrl, price: $price, userId: $userId, url: $url, category: $category)';
   }
 
   @override
@@ -213,13 +229,15 @@ class _$GiftImpl implements _Gift {
                 other.imageUrl == imageUrl) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.url, url) || other.url == url));
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.category, category) ||
+                other.category == category));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, imageUrl, price, userId, url);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, imageUrl, price, userId, url, category);
 
   /// Create a copy of Gift
   /// with the given fields replaced by the non-null parameter values.
@@ -244,7 +262,8 @@ abstract class _Gift implements Gift {
       @JsonKey(name: 'image_url') final String? imageUrl,
       required final int price,
       @JsonKey(name: 'user_id') final String? userId,
-      final String? url}) = _$GiftImpl;
+      final String? url,
+      final String? category}) = _$GiftImpl;
 
   factory _Gift.fromJson(Map<String, dynamic> json) = _$GiftImpl.fromJson;
 
@@ -262,6 +281,8 @@ abstract class _Gift implements Gift {
   String? get userId;
   @override
   String? get url;
+  @override
+  String? get category;
 
   /// Create a copy of Gift
   /// with the given fields replaced by the non-null parameter values.

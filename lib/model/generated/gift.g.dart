@@ -13,6 +13,7 @@ _$GiftImpl _$$GiftImplFromJson(Map<String, dynamic> json) => _$GiftImpl(
       price: (json['price'] as num).toInt(),
       userId: json['user_id'] as String?,
       url: json['url'] as String?,
+      category: json['category'] as String?,
     );
 
 Map<String, dynamic> _$$GiftImplToJson(_$GiftImpl instance) {
@@ -30,5 +31,6 @@ Map<String, dynamic> _$$GiftImplToJson(_$GiftImpl instance) {
   val['price'] = instance.price;
   writeNotNull('user_id', instance.userId);
   writeNotNull('url', instance.url);
+  writeNotNull('category', instance.category);
   return val;
 }

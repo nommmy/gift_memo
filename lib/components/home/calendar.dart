@@ -17,6 +17,43 @@ class _CalendarPageState extends State<Calendar> {
 
   final AnniversaryViewModel _viewModel = AnniversaryViewModel();
 
+    // late Anniversary _anniversary;
+
+  // @override
+  // void initState() async {
+  //   super.initState();
+  //      setState(() {
+  //     _anniversary = await _fetchAnniversary();
+  //   });
+  // }
+
+  //   Future<Anniversary> _fetchAnniversary() async {
+
+  //   }
+
+  // Future<void> _fetchData() async {
+  //   // データをフェッチする処理
+  //   await Future.delayed(const Duration(seconds: 2)); // ダミーデータのフェッチ
+  //   setState(() {
+  //     _anniversary = {
+  //       'id': 1,
+  //       'name': '結婚記念日',
+  //       'date': DateTime.now(),
+  //       'isGiftReminderEnabled': false,
+  //       'isAnniversaryReminderEnabled': false,
+  //       'userId': '1',
+  //       'isAnnually': true,
+  //     };
+  //   });
+  // }
+
+// late final ValueNotifier<List> _selectedEvents;
+//   _selectedEvents = ValueNotifier(_getEventsForDay(_focusedDay!));
+
+//   List _getEventsForDay(DateTime day) {
+//     return events[day] ?? [];
+//   }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

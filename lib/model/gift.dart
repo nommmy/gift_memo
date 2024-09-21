@@ -13,6 +13,7 @@ class Gift with _$Gift {
     required int price,
     @JsonKey(name: 'user_id') String? userId,
     String? url,
+    String? category
   }) = _Gift;
 
   factory Gift.fromJson(Map<String, dynamic> json) => _$GiftFromJson(json);

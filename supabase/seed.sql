@@ -7,19 +7,10 @@
 insert into public.t_user (id) values
 ('137721e9-e199-a3d1-3e92-df3dc23a07fc');
 
-insert into public.mst_category (name) values 
-('しょっぱいお菓子'), 
-('甘いお菓子'), 
-('洋服'),
-('靴'),
-('食料品'), 
-('お酒'), 
-('その他');
-
-insert into public.t_gift (name, price, user_id) values
-('せんべい', 1000, '137721e9-e199-a3d1-3e92-df3dc23a07fc'), 
-('チーズケーキ', 1000, '137721e9-e199-a3d1-3e92-df3dc23a07fc'), 
-('ワイン', 1000, '137721e9-e199-a3d1-3e92-df3dc23a07fc');
+insert into public.t_gift (name, price, user_id, category) values
+('せんべい', 1000, '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'しょっぱいお菓子'), 
+('チーズケーキ', 1000, '137721e9-e199-a3d1-3e92-df3dc23a07fc', '甘いお菓子'), 
+('ワイン', 1000, '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'お酒');
 
 insert into public.t_anniversary (name, date, user_id, is_annually) values 
 ('母誕生日', '2024/10/22', '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'true'),
@@ -40,11 +31,6 @@ insert into public.rel_anniversary_gift (anniversary_id, gift_id) values
 (2, 3),
 (3, 1),
 (4, 3);
-
-insert into public.rel_gift_categorization (gift_id, category_id) values 
-(1, 1),
-(2, 2),
-(3, 6); 
 
 insert into public.rel_present_for (recipient_id, gift_id) values 
 (1, 1),
