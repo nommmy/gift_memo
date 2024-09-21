@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:gift_memo/view_model/anniversary_view_model.dart';
+import 'package:gift_memo/model/anniv_with_gift_recipient.dart';
 
 class Calendar extends StatefulWidget {
   const Calendar({super.key});
@@ -10,60 +11,46 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarPageState extends State<Calendar> {
-  // カレンダーが表示される日付
   DateTime _focusedDay = DateTime.now();
-  // カレンダー上でマークが表示される日付
   DateTime _currentDay = DateTime.now();
+  List<AnnivWithGiftRecipient> _selectedEvents = [];
 
   final AnniversaryViewModel _viewModel = AnniversaryViewModel();
+  late Future<List<AnnivWithGiftRecipient>> _anniversaryFuture;
 
-    // late Anniversary _anniversary;
+  // TODO: こういうのをサービスに書くべき？
+  Future<List<AnnivWithGiftRecipient>> _fetchAnniversaries() async {
+    return _viewModel.fetchAnniversaries();
+  }
 
-  // @override
-  // void initState() async {
-  //   super.initState();
-  //      setState(() {
-  //     _anniversary = await _fetchAnniversary();
-  //   });
-  // }
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _anniversaryFuture = _fetchAnniversaries();
+    });
+  }
 
-  //   Future<Anniversary> _fetchAnniversary() async {
-
-  //   }
-
-  // Future<void> _fetchData() async {
-  //   // データをフェッチする処理
-  //   await Future.delayed(const Duration(seconds: 2)); // ダミーデータのフェッチ
-  //   setState(() {
-  //     _anniversary = {
-  //       'id': 1,
-  //       'name': '結婚記念日',
-  //       'date': DateTime.now(),
-  //       'isGiftReminderEnabled': false,
-  //       'isAnniversaryReminderEnabled': false,
-  //       'userId': '1',
-  //       'isAnnually': true,
-  //     };
-  //   });
-  // }
-
-// late final ValueNotifier<List> _selectedEvents;
-//   _selectedEvents = ValueNotifier(_getEventsForDay(_focusedDay!));
-
-//   List _getEventsForDay(DateTime day) {
-//     return events[day] ?? [];
-//   }
+  List<AnnivWithGiftRecipient> _getEventsForDay(
+      DateTime day, List<AnnivWithGiftRecipient> anniversary) {
+    return anniversary
+        .where((anniv) =>
+            (anniv.isAnnually || anniv.date.year == day.year) &&
+            anniv.date.month == day.month &&
+            anniv.date.day == day.day)
+        .toList();
+  }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: _viewModel.fetchAnniversaries(),
+        future: _anniversaryFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            print(snapshot.data);
             return Scaffold(
               body: SafeArea(
-                child: TableCalendar(
+                  child: Column(children: [
+                TableCalendar(
                   headerStyle: const HeaderStyle(
                     formatButtonVisible: false,
                   ),
@@ -75,7 +62,7 @@ class _CalendarPageState extends State<Calendar> {
                     setState(() {
                       _currentDay = selectedDay; // タップした際にマーク位置を更新
                       _focusedDay = selectedDay; // タップした際にカレンダーの表示位置を更新
-                      // _selectedEvents = _getEventsForDay(selectedDay);
+                      _selectedEvents = _getEventsForDay(selectedDay, snapshot.data ?? []);
                     });
                   }),
                   calendarBuilders: CalendarBuilders(
@@ -92,11 +79,26 @@ class _CalendarPageState extends State<Calendar> {
                       ),
                     ),
                   ),
-                  // eventLoader: (day) {
-                  //  return _getEventsForDay(day);
-                  // },
+                  eventLoader: (day) {
+                    return _getEventsForDay(day, snapshot.data ?? []);
+                  },
                 ),
-              ),
+                _selectedEvents.isNotEmpty
+                    ? Expanded(
+                        child: ListView.builder(
+                          itemCount: _selectedEvents.length,
+                          itemBuilder: (context, index) {
+                            final event = _selectedEvents[index];
+                            return Card(
+                              child: ListTile(
+                                title: Text(event.name),
+                              ),
+                            );
+                          },
+                        ),
+                      )
+                    : const Expanded(child: Center(child: Text('No events found'))),
+              ])),
             );
           } else {
             return const CircularProgressIndicator();
