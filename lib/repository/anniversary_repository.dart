@@ -6,7 +6,7 @@ class AnniversaryRepository {
     try {
       final SupabaseClient supabase = Supabase.instance.client;
       final data = await supabase.from('t_anniversary').select(
-          'name, date, is_annually, t_gift(name, image_url, price), t_recipient(name, icon)');
+          'name, date, is_annually, t_gift(name, image_url, price, shop), t_recipient(name, icon)');
       List<AnnivWithGiftRecipient> anniversary = [];
       data.forEach((anniv) {
         anniversary.add(AnnivWithGiftRecipient.fromJson(anniv));

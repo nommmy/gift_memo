@@ -29,6 +29,7 @@ mixin _$Gift {
   String? get userId => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
+  String? get shop => throw _privateConstructorUsedError;
 
   /// Serializes this Gift to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,7 +52,8 @@ abstract class $GiftCopyWith<$Res> {
       int price,
       @JsonKey(name: 'user_id') String? userId,
       String? url,
-      String? category});
+      String? category,
+      String? shop});
 }
 
 /// @nodoc
@@ -76,6 +78,7 @@ class _$GiftCopyWithImpl<$Res, $Val extends Gift>
     Object? userId = freezed,
     Object? url = freezed,
     Object? category = freezed,
+    Object? shop = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -106,6 +109,10 @@ class _$GiftCopyWithImpl<$Res, $Val extends Gift>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      shop: freezed == shop
+          ? _value.shop
+          : shop // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -124,7 +131,8 @@ abstract class _$$GiftImplCopyWith<$Res> implements $GiftCopyWith<$Res> {
       int price,
       @JsonKey(name: 'user_id') String? userId,
       String? url,
-      String? category});
+      String? category,
+      String? shop});
 }
 
 /// @nodoc
@@ -146,6 +154,7 @@ class __$$GiftImplCopyWithImpl<$Res>
     Object? userId = freezed,
     Object? url = freezed,
     Object? category = freezed,
+    Object? shop = freezed,
   }) {
     return _then(_$GiftImpl(
       id: freezed == id
@@ -176,6 +185,10 @@ class __$$GiftImplCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      shop: freezed == shop
+          ? _value.shop
+          : shop // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -191,7 +204,8 @@ class _$GiftImpl implements _Gift {
       required this.price,
       @JsonKey(name: 'user_id') this.userId,
       this.url,
-      this.category});
+      this.category,
+      this.shop});
 
   factory _$GiftImpl.fromJson(Map<String, dynamic> json) =>
       _$$GiftImplFromJson(json);
@@ -212,10 +226,12 @@ class _$GiftImpl implements _Gift {
   final String? url;
   @override
   final String? category;
+  @override
+  final String? shop;
 
   @override
   String toString() {
-    return 'Gift(id: $id, name: $name, imageUrl: $imageUrl, price: $price, userId: $userId, url: $url, category: $category)';
+    return 'Gift(id: $id, name: $name, imageUrl: $imageUrl, price: $price, userId: $userId, url: $url, category: $category, shop: $shop)';
   }
 
   @override
@@ -231,13 +247,14 @@ class _$GiftImpl implements _Gift {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.category, category) ||
-                other.category == category));
+                other.category == category) &&
+            (identical(other.shop, shop) || other.shop == shop));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, name, imageUrl, price, userId, url, category);
+      runtimeType, id, name, imageUrl, price, userId, url, category, shop);
 
   /// Create a copy of Gift
   /// with the given fields replaced by the non-null parameter values.
@@ -263,7 +280,8 @@ abstract class _Gift implements Gift {
       required final int price,
       @JsonKey(name: 'user_id') final String? userId,
       final String? url,
-      final String? category}) = _$GiftImpl;
+      final String? category,
+      final String? shop}) = _$GiftImpl;
 
   factory _Gift.fromJson(Map<String, dynamic> json) = _$GiftImpl.fromJson;
 
@@ -283,6 +301,8 @@ abstract class _Gift implements Gift {
   String? get url;
   @override
   String? get category;
+  @override
+  String? get shop;
 
   /// Create a copy of Gift
   /// with the given fields replaced by the non-null parameter values.

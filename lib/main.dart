@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'constant/colors.dart';
 import 'components/home/tabbed_app_bar.dart';
-import 'components/home/calendar.dart';
+import 'view/calendar_view.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -51,14 +51,16 @@ class _MyHomePageState extends State<MyHomePage> {
         length: 3,
         child: Scaffold(
           appBar: TabbedAppBar(),
-          body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-            child: TabBarView(
-              children: [
-                Calendar(),
-                Center(child: Icon(Icons.redeem)),
-                Center(child: Icon(Icons.person_outline)),
-              ],
+          body: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: TabBarView(
+                children: [
+                  CalendarView(),
+                  Center(child: Icon(Icons.redeem)),
+                  Center(child: Icon(Icons.person_outline)),
+                ],
+              ),
             ),
           ),
         ));

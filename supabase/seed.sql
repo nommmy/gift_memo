@@ -7,15 +7,15 @@
 insert into public.t_user (id) values
 ('137721e9-e199-a3d1-3e92-df3dc23a07fc');
 
-insert into public.t_gift (name, price, user_id, category) values
-('せんべい', 1000, '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'しょっぱいお菓子'), 
-('チーズケーキ', 1000, '137721e9-e199-a3d1-3e92-df3dc23a07fc', '甘いお菓子'), 
-('ワイン', 1000, '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'お酒');
+insert into public.t_gift (name, price, user_id, category, shop) values
+('せんべいせんべい煎餅煎餅せんべいせんべいせんべいせんべいせんべいせんべいせんべいせんべいせんべいせんべい', 1000, '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'しょっぱいお菓子', '千疋屋千疋屋千疋屋千疋屋千疋屋千疋屋千疋屋千疋屋千疋屋千疋屋千疋屋千疋屋千疋屋千疋屋'), 
+('チーズケーキ', 1000, '137721e9-e199-a3d1-3e92-df3dc23a07fc', '甘いお菓子', 'パティスリー東京'), 
+('ワイン', 1000, '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'お酒', 'ワインショップ東京');
 
 insert into public.t_anniversary (name, date, user_id, is_annually) values 
 ('母誕生日', '2024/10/22', '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'true'),
 ('父誕生日', '2024/02/20', '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'true'),
-('母の日', '2024/05/20', '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'true'),
+('母の日', '2024/10/22', '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'true'),
 ('友人結婚式', '2024/11/22', '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'false');
 
 insert into public.t_recipient (name, icon, relationship, user_id) values 
