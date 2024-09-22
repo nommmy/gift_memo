@@ -51,36 +51,30 @@ class _CalendarViewState extends State<CalendarView> {
                     padding: const EdgeInsets.symmetric(horizontal: 48),
                     child: Calendar(
                         anniversary: snapshot.data, onDaySelected: updateSelectedAnniversary)),
-                Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-                    child: Flex(
-                        direction: Axis.horizontal,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Events',
-                              style: TextStyle(
-                                  color: Theme.of(context).colorScheme.secondary,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold)),
-                          SizedBox(
-                              height: 24,
-                              child: TextButton(
-                                onPressed: addEvent,
-                                style: TextButton.styleFrom(
-                                    backgroundColor: Theme.of(context).colorScheme.primary,
-                                    foregroundColor: Colors.white,
-                                    padding: EdgeInsets.zero),
-                                child: const Icon(
-                                  Icons.add,
-                                  size: 18,
-                                ),
-                              ))
-                        ])),
+                const SizedBox(height: 32),
                 _selectedAnniversary.isNotEmpty
                     ? Expanded(
                         child: ListView.builder(
-                            itemCount: _selectedAnniversary.length,
+                            itemCount: _selectedAnniversary.length + 1,
                             itemBuilder: (context, index) {
+                              if (index == _selectedAnniversary.length) {
+                                return Padding(
+                                  padding: const EdgeInsets.fromLTRB(48, 12, 48, 0),
+                                  child: SizedBox(
+                                      width: double.infinity,
+                                      height: 24,
+                                      child: TextButton(
+                                          onPressed: addEvent,
+                                          style: TextButton.styleFrom(
+                                            backgroundColor: Theme.of(context).colorScheme.primary,
+                                            foregroundColor: Colors.white,
+                                            padding: EdgeInsets.zero,
+                                          ),
+                                          child: const Text('記念日を追加',
+                                              style: TextStyle(
+                                                  fontSize: 12, fontWeight: FontWeight.bold)))),
+                                );
+                              }
                               final anniv = _selectedAnniversary[index];
                               return Column(children: [
                                 Padding(
