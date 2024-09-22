@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class GiftCardLarge extends StatelessWidget {
   // TODO: カテゴリで初期化するやつ
@@ -76,7 +77,7 @@ class GiftCardLarge extends StatelessWidget {
                             ),
                             SizedBox(
                                 height: 40,
-                                child: Text('¥ $price',
+                                child: Text('¥ ${NumberFormat('#,##0').format(price)}',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Theme.of(context).colorScheme.primary,
@@ -88,7 +89,7 @@ class GiftCardLarge extends StatelessWidget {
               Positioned(
                 left: (_WIDTH - _IMAGE_WIDTH) / 2,
                 top: 0,
-                child: Container(
+                child: SizedBox(
                   width: _IMAGE_WIDTH,
                   height: _IMAGE_WIDTH,
                   child: Container(
@@ -96,7 +97,7 @@ class GiftCardLarge extends StatelessWidget {
                     height: _IMAGE_WIDTH,
                     decoration: BoxDecoration(
                       image: const DecorationImage(
-                        image: AssetImage('assets/images/default_image/chocolate.webp'),
+                        image: AssetImage('assets/images/gift_default_image/chocolate.webp'),
                         fit: BoxFit.fill,
                       ),
                       border: Border.all(color: Colors.white, width: 5),

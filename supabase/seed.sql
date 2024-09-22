@@ -13,15 +13,15 @@ insert into public.t_gift (name, price, user_id, category, shop) values
 ('ワイン', 1000, '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'お酒', 'ワインショップ東京');
 
 insert into public.t_anniversary (name, date, user_id, is_annually) values 
-('母誕生日', '2024/10/22', '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'true'),
+('母誕生日母誕生日母誕生日母誕生日母誕生日母誕生日母誕生日母誕生日母誕生日母誕生日母誕生日', '2024/10/22', '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'true'),
 ('父誕生日', '2024/02/20', '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'true'),
 ('母の日', '2024/10/22', '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'true'),
 ('友人結婚式', '2024/11/22', '137721e9-e199-a3d1-3e92-df3dc23a07fc', 'false');
 
 insert into public.t_recipient (name, icon, relationship, user_id) values 
-('由美子', 'monkey', '母', '137721e9-e199-a3d1-3e92-df3dc23a07fc'),
+('由美子', 'cow', '母', '137721e9-e199-a3d1-3e92-df3dc23a07fc'),
 ('竜一', 'lion', '父', '137721e9-e199-a3d1-3e92-df3dc23a07fc'),
-('友人', 'dog', '友達', '137721e9-e199-a3d1-3e92-df3dc23a07fc');
+('友人', 'sheep', '友達', '137721e9-e199-a3d1-3e92-df3dc23a07fc');
 
 insert into public.rel_anniversary_gift (anniversary_id, gift_id) values 
 (1, 1),
@@ -42,6 +42,7 @@ insert into public.rel_present_for (recipient_id, gift_id) values
 
 insert into public.rel_whose_anniversary (recipient_id, anniversary_id) values 
 (1, 1),
+(3, 1),
 (2, 2),
 (1, 3),
 (3, 4);
