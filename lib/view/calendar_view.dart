@@ -3,6 +3,8 @@ import 'package:gift_memo/view_model/anniversary_view_model.dart';
 import 'package:gift_memo/model/anniv_with_gift_recipient.dart';
 import 'package:gift_memo/components/home/calendar.dart';
 import 'package:gift_memo/components/gift_list_horizontal.dart';
+import 'package:gift_memo/components/wide_button.dart';
+import 'package:gift_memo/components/home/anniversary_header.dart';
 
 class CalendarView extends StatefulWidget {
   const CalendarView({super.key});
@@ -44,65 +46,29 @@ class _CalendarViewState extends State<CalendarView> {
         future: _anniversaryFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 48),
-                    child: Calendar(
-                        anniversary: snapshot.data, onDaySelected: updateSelectedAnniversary)),
-                const SizedBox(height: 32),
-                _selectedAnniversary.isNotEmpty
-                    ? Expanded(
-                        child: ListView.builder(
-                            itemCount: _selectedAnniversary.length + 1,
-                            itemBuilder: (context, index) {
-                              if (index == _selectedAnniversary.length) {
-                                return Padding(
-                                  padding: const EdgeInsets.fromLTRB(48, 12, 48, 0),
-                                  child: SizedBox(
-                                      width: double.infinity,
-                                      height: 24,
-                                      child: TextButton(
-                                          onPressed: addEvent,
-                                          style: TextButton.styleFrom(
-                                            backgroundColor: Theme.of(context).colorScheme.primary,
-                                            foregroundColor: Colors.white,
-                                            padding: EdgeInsets.zero,
-                                          ),
-                                          child: const Text('記念日を追加',
-                                              style: TextStyle(
-                                                  fontSize: 12, fontWeight: FontWeight.bold)))),
-                                );
-                              }
-                              final anniv = _selectedAnniversary[index];
-                              return Column(children: [
-                                Padding(
-                                    padding: const EdgeInsets.fromLTRB(40, 0, 32, 8),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                            child: Text(anniv.name,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: const TextStyle(
-                                                    fontWeight: FontWeight.bold, fontSize: 18))),
-                                        Wrap(spacing: 4, children: [
-                                          ...anniv.recipients!.map((recipient) => CircleAvatar(
-                                                radius: 16,
-                                                backgroundImage: AssetImage(
-                                                    'assets/images/user_icon/${recipient.icon}.webp'),
-                                              ))
-                                        ])
-                                      ],
-                                    )),
-                                GiftListHorizontal(anniversary: anniv)
-                              ]);
-                            }))
-                    : const Expanded(child: Center(child: Text('No Events'))),
-              ],
-            );
+            return ListView(padding: const EdgeInsets.only(top: 10, bottom: 0), children: [
+              Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 48),
+                  child: Calendar(
+                      anniversary: snapshot.data, onDaySelected: updateSelectedAnniversary)),
+              const SizedBox(height: 32),
+              _selectedAnniversary.isNotEmpty
+                  ? Column(children: [
+                      ..._selectedAnniversary.map((anniv) => Column(children: [
+                            Padding(
+                                padding: const EdgeInsets.fromLTRB(40, 0, 32, 8),
+                                child: AnniversaryHeader(anniversary: anniv)),
+                            GiftListHorizontal(anniversary: anniv)
+                          ])),
+                      Padding(
+                          padding: const EdgeInsets.fromLTRB(48, 12, 48, 0),
+                          child: WideButton(onClickEvent: addEvent))
+                    ])
+                  : const Center(child: Text('No Events')),
+            ]);
           } else {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+                child: SizedBox(height: 50, width: 50, child: CircularProgressIndicator()));
           }
         });
   }
