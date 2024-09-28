@@ -5,12 +5,13 @@ part 'generated/recipient.g.dart';
 
 @freezed
 class Recipient with _$Recipient {
+  @JsonSerializable(includeIfNull: false)
   const factory Recipient({
-    required int id,
+    int? id,
     required String name,
     required String icon,
-    required String relationship,
-    @JsonKey(name: 'user_id') required int userId,
+    String? relationship,
+    @JsonKey(name: 'user_id') String? userId,
   }) = _Recipient;
 
   factory Recipient.fromJson(Map<String, dynamic> json) => _$RecipientFromJson(json);

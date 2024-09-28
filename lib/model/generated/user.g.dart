@@ -7,18 +7,21 @@ part of '../user.dart';
 // **************************************************************************
 
 _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
-      id: (json['id'] as num).toInt(),
-      username: json['username'] as String,
-      email: json['email'] as String,
-      passwordHash: json['password_hash'] as String,
-      isPremium: json['isPremium'] as bool? ?? false,
+      id: json['id'] as String,
+      isPremium: json['isPremium'] as bool?,
     );
 
-Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'username': instance.username,
-      'email': instance.email,
-      'password_hash': instance.passwordHash,
-      'isPremium': instance.isPremium,
-    };
+Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('isPremium', instance.isPremium);
+  return val;
+}

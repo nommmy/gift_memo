@@ -20,12 +20,8 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
-  int get id => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  @JsonKey(name: 'password_hash')
-  String get passwordHash => throw _privateConstructorUsedError;
-  bool get isPremium => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  bool? get isPremium => throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,12 +37,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call(
-      {int id,
-      String username,
-      String email,
-      @JsonKey(name: 'password_hash') String passwordHash,
-      bool isPremium});
+  $Res call({String id, bool? isPremium});
 }
 
 /// @nodoc
@@ -65,32 +56,17 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? id = null,
-    Object? username = null,
-    Object? email = null,
-    Object? passwordHash = null,
-    Object? isPremium = null,
+    Object? isPremium = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
               as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      passwordHash: null == passwordHash
-          ? _value.passwordHash
-          : passwordHash // ignore: cast_nullable_to_non_nullable
-              as String,
-      isPremium: null == isPremium
+      isPremium: freezed == isPremium
           ? _value.isPremium
           : isPremium // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ) as $Val);
   }
 }
@@ -102,12 +78,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String username,
-      String email,
-      @JsonKey(name: 'password_hash') String passwordHash,
-      bool isPremium});
+  $Res call({String id, bool? isPremium});
 }
 
 /// @nodoc
@@ -123,65 +94,38 @@ class __$$UserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? username = null,
-    Object? email = null,
-    Object? passwordHash = null,
-    Object? isPremium = null,
+    Object? isPremium = freezed,
   }) {
     return _then(_$UserImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
               as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      passwordHash: null == passwordHash
-          ? _value.passwordHash
-          : passwordHash // ignore: cast_nullable_to_non_nullable
-              as String,
-      isPremium: null == isPremium
+      isPremium: freezed == isPremium
           ? _value.isPremium
           : isPremium // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(includeIfNull: false)
 class _$UserImpl implements _User {
-  const _$UserImpl(
-      {required this.id,
-      required this.username,
-      required this.email,
-      @JsonKey(name: 'password_hash') required this.passwordHash,
-      required this.isPremium = false});
+  const _$UserImpl({required this.id, this.isPremium});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
-  final String username;
-  @override
-  final String email;
-  @override
-  @JsonKey(name: 'password_hash')
-  final String passwordHash;
-  @override
-  @JsonKey()
-  final bool isPremium;
+  final bool? isPremium;
 
   @override
   String toString() {
-    return 'User(id: $id, username: $username, email: $email, passwordHash: $passwordHash, isPremium: $isPremium)';
+    return 'User(id: $id, isPremium: $isPremium)';
   }
 
   @override
@@ -190,19 +134,13 @@ class _$UserImpl implements _User {
         (other.runtimeType == runtimeType &&
             other is _$UserImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.passwordHash, passwordHash) ||
-                other.passwordHash == passwordHash) &&
             (identical(other.isPremium, isPremium) ||
                 other.isPremium == isPremium));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, username, email, passwordHash, isPremium);
+  int get hashCode => Object.hash(runtimeType, id, isPremium);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -221,26 +159,15 @@ class _$UserImpl implements _User {
 }
 
 abstract class _User implements User {
-  const factory _User(
-      {required final int id,
-      required final String username,
-      required final String email,
-      @JsonKey(name: 'password_hash') required final String passwordHash,
-      required final bool isPremium}) = _$UserImpl;
+  const factory _User({required final String id, final bool? isPremium}) =
+      _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
-  String get username;
-  @override
-  String get email;
-  @override
-  @JsonKey(name: 'password_hash')
-  String get passwordHash;
-  @override
-  bool get isPremium;
+  bool? get isPremium;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.

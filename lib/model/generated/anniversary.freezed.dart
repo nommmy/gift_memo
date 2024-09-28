@@ -20,15 +20,17 @@ Anniversary _$AnniversaryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Anniversary {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_gift_reminder_enabled')
-  bool get isGiftReminderEnabled => throw _privateConstructorUsedError;
+  bool? get isGiftReminderEnabled => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_anniversary_reminder_enabled')
-  bool get isAnniversartReminderEnabled => throw _privateConstructorUsedError;
+  bool? get isAnniversartReminderEnabled => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
-  int get userId => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_annually')
+  bool? get isAnnually => throw _privateConstructorUsedError;
 
   /// Serializes this Anniversary to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,13 +49,14 @@ abstract class $AnniversaryCopyWith<$Res> {
       _$AnniversaryCopyWithImpl<$Res, Anniversary>;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String name,
       DateTime date,
-      @JsonKey(name: 'is_gift_reminder_enabled') bool isGiftReminderEnabled,
+      @JsonKey(name: 'is_gift_reminder_enabled') bool? isGiftReminderEnabled,
       @JsonKey(name: 'is_anniversary_reminder_enabled')
-      bool isAnniversartReminderEnabled,
-      @JsonKey(name: 'user_id') int userId});
+      bool? isAnniversartReminderEnabled,
+      @JsonKey(name: 'user_id') String? userId,
+      @JsonKey(name: 'is_annually') bool? isAnnually});
 }
 
 /// @nodoc
@@ -71,18 +74,19 @@ class _$AnniversaryCopyWithImpl<$Res, $Val extends Anniversary>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? date = null,
-    Object? isGiftReminderEnabled = null,
-    Object? isAnniversartReminderEnabled = null,
-    Object? userId = null,
+    Object? isGiftReminderEnabled = freezed,
+    Object? isAnniversartReminderEnabled = freezed,
+    Object? userId = freezed,
+    Object? isAnnually = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -91,18 +95,22 @@ class _$AnniversaryCopyWithImpl<$Res, $Val extends Anniversary>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isGiftReminderEnabled: null == isGiftReminderEnabled
+      isGiftReminderEnabled: freezed == isGiftReminderEnabled
           ? _value.isGiftReminderEnabled
           : isGiftReminderEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isAnniversartReminderEnabled: null == isAnniversartReminderEnabled
+              as bool?,
+      isAnniversartReminderEnabled: freezed == isAnniversartReminderEnabled
           ? _value.isAnniversartReminderEnabled
           : isAnniversartReminderEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      userId: null == userId
+              as bool?,
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
+      isAnnually: freezed == isAnnually
+          ? _value.isAnnually
+          : isAnnually // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -116,13 +124,14 @@ abstract class _$$AnniversaryImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String name,
       DateTime date,
-      @JsonKey(name: 'is_gift_reminder_enabled') bool isGiftReminderEnabled,
+      @JsonKey(name: 'is_gift_reminder_enabled') bool? isGiftReminderEnabled,
       @JsonKey(name: 'is_anniversary_reminder_enabled')
-      bool isAnniversartReminderEnabled,
-      @JsonKey(name: 'user_id') int userId});
+      bool? isAnniversartReminderEnabled,
+      @JsonKey(name: 'user_id') String? userId,
+      @JsonKey(name: 'is_annually') bool? isAnnually});
 }
 
 /// @nodoc
@@ -138,18 +147,19 @@ class __$$AnniversaryImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? date = null,
-    Object? isGiftReminderEnabled = null,
-    Object? isAnniversartReminderEnabled = null,
-    Object? userId = null,
+    Object? isGiftReminderEnabled = freezed,
+    Object? isAnniversartReminderEnabled = freezed,
+    Object? userId = freezed,
+    Object? isAnnually = freezed,
   }) {
     return _then(_$AnniversaryImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -158,57 +168,65 @@ class __$$AnniversaryImplCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isGiftReminderEnabled: null == isGiftReminderEnabled
+      isGiftReminderEnabled: freezed == isGiftReminderEnabled
           ? _value.isGiftReminderEnabled
           : isGiftReminderEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isAnniversartReminderEnabled: null == isAnniversartReminderEnabled
+              as bool?,
+      isAnniversartReminderEnabled: freezed == isAnniversartReminderEnabled
           ? _value.isAnniversartReminderEnabled
           : isAnniversartReminderEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      userId: null == userId
+              as bool?,
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
+      isAnnually: freezed == isAnnually
+          ? _value.isAnnually
+          : isAnnually // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(includeIfNull: false)
 class _$AnniversaryImpl implements _Anniversary {
   const _$AnniversaryImpl(
-      {required this.id,
+      {this.id,
       required this.name,
       required this.date,
-      @JsonKey(name: 'is_gift_reminder_enabled')
-      required this.isGiftReminderEnabled = false,
+      @JsonKey(name: 'is_gift_reminder_enabled') this.isGiftReminderEnabled,
       @JsonKey(name: 'is_anniversary_reminder_enabled')
-      required this.isAnniversartReminderEnabled = false,
-      @JsonKey(name: 'user_id') required this.userId});
+      this.isAnniversartReminderEnabled,
+      @JsonKey(name: 'user_id') this.userId,
+      @JsonKey(name: 'is_annually') this.isAnnually});
 
   factory _$AnniversaryImpl.fromJson(Map<String, dynamic> json) =>
       _$$AnniversaryImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   final String name;
   @override
   final DateTime date;
   @override
   @JsonKey(name: 'is_gift_reminder_enabled')
-  final bool isGiftReminderEnabled;
+  final bool? isGiftReminderEnabled;
   @override
   @JsonKey(name: 'is_anniversary_reminder_enabled')
-  final bool isAnniversartReminderEnabled;
+  final bool? isAnniversartReminderEnabled;
   @override
   @JsonKey(name: 'user_id')
-  final int userId;
+  final String? userId;
+  @override
+  @JsonKey(name: 'is_annually')
+  final bool? isAnnually;
 
   @override
   String toString() {
-    return 'Anniversary(id: $id, name: $name, date: $date, isGiftReminderEnabled: $isGiftReminderEnabled, isAnniversartReminderEnabled: $isAnniversartReminderEnabled, userId: $userId)';
+    return 'Anniversary(id: $id, name: $name, date: $date, isGiftReminderEnabled: $isGiftReminderEnabled, isAnniversartReminderEnabled: $isAnniversartReminderEnabled, userId: $userId, isAnnually: $isAnnually)';
   }
 
   @override
@@ -225,13 +243,15 @@ class _$AnniversaryImpl implements _Anniversary {
                     isAnniversartReminderEnabled) ||
                 other.isAnniversartReminderEnabled ==
                     isAnniversartReminderEnabled) &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.isAnnually, isAnnually) ||
+                other.isAnnually == isAnnually));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, date,
-      isGiftReminderEnabled, isAnniversartReminderEnabled, userId);
+      isGiftReminderEnabled, isAnniversartReminderEnabled, userId, isAnnually);
 
   /// Create a copy of Anniversary
   /// with the given fields replaced by the non-null parameter values.
@@ -251,33 +271,38 @@ class _$AnniversaryImpl implements _Anniversary {
 
 abstract class _Anniversary implements Anniversary {
   const factory _Anniversary(
-      {required final int id,
-      required final String name,
-      required final DateTime date,
-      @JsonKey(name: 'is_gift_reminder_enabled')
-      required final bool isGiftReminderEnabled,
-      @JsonKey(name: 'is_anniversary_reminder_enabled')
-      required final bool isAnniversartReminderEnabled,
-      @JsonKey(name: 'user_id') required final int userId}) = _$AnniversaryImpl;
+          {final int? id,
+          required final String name,
+          required final DateTime date,
+          @JsonKey(name: 'is_gift_reminder_enabled')
+          final bool? isGiftReminderEnabled,
+          @JsonKey(name: 'is_anniversary_reminder_enabled')
+          final bool? isAnniversartReminderEnabled,
+          @JsonKey(name: 'user_id') final String? userId,
+          @JsonKey(name: 'is_annually') final bool? isAnnually}) =
+      _$AnniversaryImpl;
 
   factory _Anniversary.fromJson(Map<String, dynamic> json) =
       _$AnniversaryImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
   String get name;
   @override
   DateTime get date;
   @override
   @JsonKey(name: 'is_gift_reminder_enabled')
-  bool get isGiftReminderEnabled;
+  bool? get isGiftReminderEnabled;
   @override
   @JsonKey(name: 'is_anniversary_reminder_enabled')
-  bool get isAnniversartReminderEnabled;
+  bool? get isAnniversartReminderEnabled;
   @override
   @JsonKey(name: 'user_id')
-  int get userId;
+  String? get userId;
+  @override
+  @JsonKey(name: 'is_annually')
+  bool? get isAnnually;
 
   /// Create a copy of Anniversary
   /// with the given fields replaced by the non-null parameter values.

@@ -5,12 +5,16 @@ part 'generated/gift.g.dart';
 
 @freezed
 class Gift with _$Gift {
+  @JsonSerializable(includeIfNull: false)
   const factory Gift({
-    required int id,
+    int? id,
     required String name,
-    @JsonKey(name: 'image_url') required String imageUrl,
+    @JsonKey(name: 'image_url') String? imageUrl,
     required int price,
-    @JsonKey(name: 'user_id') required String userId,
+    @JsonKey(name: 'user_id') String? userId,
+    String? url,
+    String? category,
+    String? shop
   }) = _Gift;
 
   factory Gift.fromJson(Map<String, dynamic> json) => _$GiftFromJson(json);

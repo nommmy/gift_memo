@@ -20,12 +20,12 @@ Recipient _$RecipientFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Recipient {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get icon => throw _privateConstructorUsedError;
-  String get relationship => throw _privateConstructorUsedError;
+  String? get relationship => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
-  int get userId => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
 
   /// Serializes this Recipient to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,11 +43,11 @@ abstract class $RecipientCopyWith<$Res> {
       _$RecipientCopyWithImpl<$Res, Recipient>;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String name,
       String icon,
-      String relationship,
-      @JsonKey(name: 'user_id') int userId});
+      String? relationship,
+      @JsonKey(name: 'user_id') String? userId});
 }
 
 /// @nodoc
@@ -65,17 +65,17 @@ class _$RecipientCopyWithImpl<$Res, $Val extends Recipient>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? icon = null,
-    Object? relationship = null,
-    Object? userId = null,
+    Object? relationship = freezed,
+    Object? userId = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -84,14 +84,14 @@ class _$RecipientCopyWithImpl<$Res, $Val extends Recipient>
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String,
-      relationship: null == relationship
+      relationship: freezed == relationship
           ? _value.relationship
           : relationship // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
+              as String?,
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
     ) as $Val);
   }
 }
@@ -105,11 +105,11 @@ abstract class _$$RecipientImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String name,
       String icon,
-      String relationship,
-      @JsonKey(name: 'user_id') int userId});
+      String? relationship,
+      @JsonKey(name: 'user_id') String? userId});
 }
 
 /// @nodoc
@@ -125,17 +125,17 @@ class __$$RecipientImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? icon = null,
-    Object? relationship = null,
-    Object? userId = null,
+    Object? relationship = freezed,
+    Object? userId = freezed,
   }) {
     return _then(_$RecipientImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -144,42 +144,43 @@ class __$$RecipientImplCopyWithImpl<$Res>
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String,
-      relationship: null == relationship
+      relationship: freezed == relationship
           ? _value.relationship
           : relationship // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
+              as String?,
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(includeIfNull: false)
 class _$RecipientImpl implements _Recipient {
   const _$RecipientImpl(
-      {required this.id,
+      {this.id,
       required this.name,
       required this.icon,
-      required this.relationship,
-      @JsonKey(name: 'user_id') required this.userId});
+      this.relationship,
+      @JsonKey(name: 'user_id') this.userId});
 
   factory _$RecipientImpl.fromJson(Map<String, dynamic> json) =>
       _$$RecipientImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   final String name;
   @override
   final String icon;
   @override
-  final String relationship;
+  final String? relationship;
   @override
   @JsonKey(name: 'user_id')
-  final int userId;
+  final String? userId;
 
   @override
   String toString() {
@@ -222,26 +223,26 @@ class _$RecipientImpl implements _Recipient {
 
 abstract class _Recipient implements Recipient {
   const factory _Recipient(
-      {required final int id,
+      {final int? id,
       required final String name,
       required final String icon,
-      required final String relationship,
-      @JsonKey(name: 'user_id') required final int userId}) = _$RecipientImpl;
+      final String? relationship,
+      @JsonKey(name: 'user_id') final String? userId}) = _$RecipientImpl;
 
   factory _Recipient.fromJson(Map<String, dynamic> json) =
       _$RecipientImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
   String get name;
   @override
   String get icon;
   @override
-  String get relationship;
+  String? get relationship;
   @override
   @JsonKey(name: 'user_id')
-  int get userId;
+  String? get userId;
 
   /// Create a copy of Recipient
   /// with the given fields replaced by the non-null parameter values.
