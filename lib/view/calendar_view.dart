@@ -46,7 +46,7 @@ class _CalendarViewState extends State<CalendarView> {
         future: _anniversaryFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return ListView(padding: const EdgeInsets.only(top: 10, bottom: 0), children: [
+            return ListView(children: [
               Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 48),
                   child: Calendar(

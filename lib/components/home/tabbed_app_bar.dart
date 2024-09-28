@@ -7,10 +7,8 @@ class TabbedAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      expandedHeight: 70,
-      pinned: true,
-      floating: true,
+    return AppBar(
+      backgroundColor: Colors.white,
       bottom: TabBar(
         tabs: icons
             .map((icon) => Tab(icon: Icon(icon, color: Theme.of(context).colorScheme.primary)))

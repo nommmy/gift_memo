@@ -47,25 +47,22 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return const DefaultTabController(
         length: 3,
         child: Scaffold(
-          body: NestedScrollView(
-              headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-                return <Widget>[
-                  const TabbedAppBar(),
-                ];
-              },
-              body: const SafeArea(
-                top: false,
-                child: TabBarView(
-                  children: [
-                    CalendarView(),
-                    Center(child: Icon(Icons.redeem)),
-                    Center(child: Icon(Icons.person_outline)),
-                  ],
-                ),
-              )),
+          appBar: TabbedAppBar(),
+          body: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(0, 8, 0, 16),
+              child: TabBarView(
+                children: [
+                  CalendarView(),
+                  Center(child: Icon(Icons.redeem)),
+                  Center(child: Icon(Icons.person_outline)),
+                ],
+              ),
+            ),
+          ),
         ));
   }
 }
